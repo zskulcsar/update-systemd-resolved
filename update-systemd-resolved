@@ -411,6 +411,10 @@ main() {
     fi
 
     "$script_type" "$link" "$if_index" "$@"
+
+    # Good idea to flush DNS cache
+    log "Flushing DNS cache"
+    kill -12 $(pidof systemd-resolved)
   fi
 }
 
